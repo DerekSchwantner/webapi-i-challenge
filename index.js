@@ -62,9 +62,9 @@ server.delete("/api/users/:id", (req, res) => {
 
   Db.remove(id)
     .then(deleted => {
-      if (deleted) {
+      if (deleted === 1) {
         res.status(204).end();
-      } else if (!id) {
+      } else {
         res
           .status(404)
           .json({ message: "The user with the specified ID does not exist." });
